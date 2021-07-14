@@ -1,0 +1,49 @@
+README TEMA1 PA
+323CC RADULESCU FLORIN
+
+TASK1 - BANI
+
+In cadrul rezolvarii primei probleme am considerat urmatoarele:
+Datele de intrare (tipul instructiunii si numarul de bancnote) vot fi stocate
+in doua variabile, iType si N. iType va fi verificat cu un if, iar in functie
+de valoarea acestuia se vor trata doua cazuri:
+-daca este 1, rezultatul se va calcula dupa o formula matematica simpla:
+fiecare bancnota genereaza inca doua si sunt 5 tipuri de bancnote, deci putem
+aranja N bancnote in 5*2^(N-1) moduri;
+-daca este 2, atunci folosim programare dinamica in modul urmator:
+formam un tablou bidimensional de dimensiune dp[N+1][5], in care vom tine minte
+cate bancnote de fiecare tip avem atunci cand avem k-1 bancnote. Suma acestor 5
+tipuri va fi in orice moment k (la momentul final, N). Fiecare tip de bancnota
+de la momentul k poate fi generat de catre diverse alte bancnote existente la 
+momentul k-1. Deci vom calcula progresiv pe cate un nivel pana ajungem la N.
+In cazul de baza, in momentul 0 avem 1 bancnota, care poate fi de oricare tip,
+deci exista 5 seturi posibile. In momentele urmatoare, fiecare tip va fi
+generat de bancnotele deja existente la momentul anterior. Suma elementelor de
+pe pozitiile dp[N-1][0..4] este rezultatul cautat.
+Complexitate tip 1: O(logN) - functia de ridicare la putere de logN ori
+tip 2: O(N) - un for [i..N]
+
+TASK2 - GARD
+
+La problema 2 am implementat o clasa Pair care sa joace rolul intervalului
+[x,y], notate start si end. Se vor citi N intervale ce vor fi puse intr-un
+ArrayList v. Am implementat un comparator care este folosit pentru a sorta
+aceste intervale in functie de start, crescator, apoi de end. Astfel, de
+fiecare data cand luam din v un nou interval, acesta va avea capatul de start
+mereu in cel precedent (deci, in gard), si ramane sa tratam cazul capatului
+end in felul urmator: daca end-ul bucatii curente este mai mare decat end-ul
+gardului, bucata nu este redundanta si este adaugata in gard. Daca este mai
+mic, atunci bucata este complet inclusa in gardul deja existent, deci este
+redundanta. Un contor numara bucatile adaugate. Rezultatul, anume bucatile
+redundante, este diferenta dintre numarul total de bucati si cele adaugate.
+Complexitate: sortare + parcurgere = O(2N) -> O(N)
+
+TASK3 - BOMBOANE
+
+Nu a fost implementat cu succes.
+
+TASK4 - SALA
+
+Nu a fost implementat.
+
+
